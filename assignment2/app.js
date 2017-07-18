@@ -12,8 +12,8 @@
 
     toBuyController.items = ShoppingListCheckOffService.getToBuyList();
 
-    toBuyController.buyItem = function (itemName, quantity) {
-      ShoppingListCheckOffService.buyItem(itemName, quantity);
+    toBuyController.buyItem = function (index) {
+      ShoppingListCheckOffService.buyItem(index);
     };
   }
 
@@ -23,27 +23,32 @@
 
     alreadyBoughtController.items = ShoppingListCheckOffService.getBoughtList();
 
+    console.log($scope);
   }
 
   function ShoppingListCheckOffService() {
     var service = this;
 
-    // List of shopping items
-    var toBuyList = [{name:'cookies',quantity:10}, {name:'cookies',quantity:10}];
-    var alreadyBoughtList = [{name:'cookies',quantity:10}];
+    // List of items to buy
+    var toBuyList = [{name:'beer',quantity:10}, {name:'cookies',quantity:10},
+        {name:'candies',quantity:10}, {name:'tigers',quantity:10},
+        {name:'books',quantity:10}, {name:'ice creams',quantity:10}];
 
-    service.buyItem = function (itemName, quantity) {
-      var item = {
-        name: itemName,
-        quantity: quantity
-      };
+    // List of items already bought
+    var alreadyBoughtList = [];
+
+    service.buyItem = function (index) {
       
-      // insert in bought
-      alreadyBoughtList.push(item);
+      if (index > -1 && index < toBuyList.length) {
+        // insert in bought
+        alreadyBoughtList.push(toBuyList[index]);
 
-      // remove from toBuy
-      var itemIndex = toBuyList.indexOf(item);
-      toBuyList.splice(itemIndex, 1);
+        // remove from toBuy      
+        toBuyList.splice(index, 1);
+      
+      } else {
+        alert("Object not found!");
+      }
     };
 
     service.getToBuyList = function () {
