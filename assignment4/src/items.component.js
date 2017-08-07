@@ -1,8 +1,12 @@
 (function() {
   'use strict';
-  
-  angular.module('MenuApp', ['ui.router']);
 
-
+angular.module('MenuApp')
+  .component('items', {
+    templateUrl: 'src/items.html',
+    bindings: {
+      items: '<'
+    }
+  });
 
 })();

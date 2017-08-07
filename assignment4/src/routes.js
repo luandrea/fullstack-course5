@@ -1,33 +1,46 @@
 (function() {
   'use strict';
-  
-  angular.module('MenuApp', ['ui.router']);
 
-  angular.module('MenuApp')
-    .config(RoutesConfig);
+  angular.module('MenuApp').config(RoutesConfig);
 
   RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
   function RoutesConfig($stateProvider, $urlRouterProvider) {
 
-    // Redirect to tab 1 if no other URL matches
-    $urlRouterProvider.otherwise('/home');
+    // Redirect to index if no other URL matches
+    $urlRouterProvider.otherwise('/');
 
     // Set up UI states
     $stateProvider
+
+      // Home
       .state('home', {
-        url: '/home',
+        url: '/',
         templateUrl: 'src/home.html'
       })
 
+      // category List
       .state('categories', {
         url: '/categories',
-        templateUrl: 'src/categories.html'
+        templateUrl: 'src/categories.template.html',
+        controller: 'CategoriesController as categoriesCtrl',
+        resolve: {
+          response: ['MenuDataService', function(MenuDataService) {
+            return MenuDataService.getAllCategories();
+          }]
+        }
       })
 
+      // item List
       .state('items', {
-        url: '/categories',
-        templateUrl: 'src/categories.html'
+        url: '/item-list/{shortNameCategory}',
+        templateUrl: 'src/items.template.html',
+        controller: 'ItemDetailController as itemDetail',
+        resolve: {
+          response: ['$stateParams', 'MenuDataService', function($stateParams, MenuDataService) {
+            return MenuDataService.getItemsForCategory($stateParams.shortNameCategory);
+          }]
+        }
       });
   }
 

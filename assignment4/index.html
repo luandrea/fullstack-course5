@@ -5,15 +5,15 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
-  <title>Intro to ui-router</title>
+  <title>Luca's Chinese Restaurant</title>
 </head>
 
 <body>
   <h1>Welcome to Luca's Chinese Restaurant!!</h1>
 
   <div class="tabs">
-    <a ui-sref="home" ui-sref-active="activeTab">Tab 1</a>
-    <a ui-sref="categories" ui-sref-active="activeTab">Tab 2</a>
+    <a ui-sref="home" ui-sref-active="activeTab">Return Home</a>
+    <a ui-sref="categories" ui-sref-active="activeTab">Choose your food!</a>
     <!-- <button ui-sref="tab2">Tab 2</button> -->
   </div>
 
@@ -25,9 +25,21 @@
 
   <!-- Modules -->
   <script src="src/menuapp.module.js"></script>
+  <script src="src/data.module.js"></script>
 
   <!-- Routes -->
   <script src="src/routes.js"></script>
+
+  <!-- Services -->
+  <script src="src/menudata.service.js"></script>
+
+  <!-- Controller -->
+  <script src="src/categories.controller.js"></script>
+  <script src="src/items.controller.js"></script>
+
+  <!-- Components -->
+  <script src="src/categories.component.js"></script>
+  <script src="src/items.component.js"></script>
 
 </body>
 
