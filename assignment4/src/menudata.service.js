@@ -29,7 +29,7 @@
         url: (ApiBasePath + "/menu_items.json?category=" + categoryShortName)
       });
 
-      console.log("cerco gli elementi nella categoria");
+      console.log("cerco gli elementi nella categoria: "+categoryShortName);
 
       return response;
     }
