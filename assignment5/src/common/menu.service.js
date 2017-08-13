@@ -9,12 +9,13 @@ MenuService.$inject = ['$http', 'ApiPath', 'RealSitePath'];
 function MenuService($http, ApiPath, RealSitePath) {
   var service = this;
 
+  var registeredUserList = [];
+
   service.getCategories = function () {
     return $http.get(ApiPath + '/categories.json').then(function (response) {
       return response.data;
     });
   };
-
 
   service.getMenuItems = function (category) {
     var config = {};
@@ -27,15 +28,20 @@ function MenuService($http, ApiPath, RealSitePath) {
     });
   };
 
-  service.getMenuItem = function(shortName) {
+  service.getMenuItem = function (shortName) {
+    return $http.get(RealSitePath + '/menu_items/' + shortName + '.json');
+  };
 
-    return $http.get(RealSitePath + '/menu_items/' + shortName + '.json').then(function(response) {
-      return response.data;
-    });
+  service.addRegisteredUser = function(user) {
+
+    registeredUserList.push(user);
+    console.log(registeredUserList);
+  };
+
+  service.getRegisteredUserList = function() {
+    return registeredUserList;
   };
 
 }
-
-
 
 })();
