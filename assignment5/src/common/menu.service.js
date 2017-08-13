@@ -39,6 +39,7 @@ function MenuService($http, ApiPath, RealSitePath) {
   };
 
   service.getRegisteredUserList = function() {
+    console.log(registeredUserList);
     return registeredUserList;
   };
 
