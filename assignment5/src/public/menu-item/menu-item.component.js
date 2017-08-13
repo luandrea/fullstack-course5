@@ -11,10 +11,10 @@ angular.module('public')
 });
 
 
-MenuItemController.$inject = ['ApiPath'];
-function MenuItemController(ApiPath) {
+MenuItemController.$inject = ['RealSitePath'];
+function MenuItemController(RealSitePath) {
   var $ctrl = this;
-  $ctrl.basePath = ApiPath;
+  $ctrl.basePath = RealSitePath;
 }
 
 })();
