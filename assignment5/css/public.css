@@ -113,6 +113,10 @@ h3.menu-item-title {
 }
 /* END SINGLE CATEGORY PAGE */
 
+/* Newsletter FORM */
+input {
+  color: black;
+}
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {
