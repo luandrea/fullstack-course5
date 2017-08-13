@@ -2,12 +2,12 @@
 "use strict";
 
 angular.module('public')
-.controller('MenuItemsController', MenuItemsController);
+.controller('SignUpController', SignUpController);
 
-MenuItemsController.$inject = ['menuItems'];
-function MenuItemsController(menuItems) {
+//SignUpController.$inject = ['menuItems'];
+function SignUpController() {
   var $ctrl = this;
-  $ctrl.menuItems = menuItems;
+  //$ctrl.menuItems = menuItems;
 }
 
 })();
